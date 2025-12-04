@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/sanju-we/Linkedin-Manager-Backennd#readme",
+  "bugs": {
+    "url": "https://github.com/sanju-we/Linkedin-Manager-Backennd/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanju-we/Linkedin-Manager-Backennd.git"
+  },
+  "license": "ISC",
+  "author": "Sanju",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "dependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
