@@ -1,40 +1,22 @@
 {
-  "name": "server",
+  "name": "linkedin-management-server",
   "version": "1.0.0",
-  "description": "",
-  "homepage": "https://github.com/sanju-we/Linkedin-Manager-Backennd#readme",
-  "bugs": {
-    "url": "https://github.com/sanju-we/Linkedin-Manager-Backennd/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sanju-we/Linkedin-Manager-Backennd.git"
-  },
-  "license": "ISC",
-  "author": "Sanju",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "main": "src/server.js",
   "scripts": {
-   "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-  "build": "tsc",
-  "start": "node dist/index.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "npm run lint && jest"
   },
-  "keywords": [],
   "dependencies": {
-    "express": "^5.2.1",
-    "nodemon": "^3.1.11"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@types/express": "^5.0.6",
-    "@types/node": "^24.10.1",
-    "@typescript-eslint/eslint-plugin": "^8.48.1",
-    "@typescript-eslint/parser": "^8.48.1",
-    "eslint": "^9.39.1",
-    "globals": "^16.5.0",
-    "jiti": "^2.6.1",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.48.1"
+    "nodemon": "^3.1.4",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
   }
 }
