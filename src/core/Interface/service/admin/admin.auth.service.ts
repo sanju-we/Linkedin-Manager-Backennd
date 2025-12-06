@@ -1,4 +1,4 @@
 
 export interface IAdminAuthService {
-  verifyLogin(data:{email:string,password:string}):Promise<{accessToken:string,refreshToken:string}>;
+  verifyLogin(data:{name:string,password:string}):Promise<{accessToken:string,refreshToken:string}>;
 }

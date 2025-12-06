@@ -35,3 +35,9 @@ export class INVALID_CREDENTIAL extends HttpError {
     super(400, 'Invalid Password');
   }
 }
+
+export class DATA_NOT_FOUND extends HttpError {
+  constructor() {
+    super(400, 'Data not found');
+  }
+}

@@ -1,10 +1,20 @@
 import { Container } from "inversify";
 
+// shated
+import { IJWT } from "../Interface/JWT/IJWT.ts";
+import { JWT } from "../../utils/JWT.setup.ts";
+
 // admin DI
 import { IAdminAuthController } from "../Interface/constroller/admin/Iadmin.auth.controller.ts";
 import { AdminAuthController } from "../../controller/admin/admin.auth.controller.ts";
 import { IAdminRepository } from "../Interface/Respository/IAdminRepository.ts";
 import { AdminRepository } from "../../repositories/Admin.repository.ts";
+import { IAdminUserController } from "../Interface/constroller/admin/Iadmin.user.controller.ts";
+import { AdminUserController } from "../../controller/admin/admin.user.controller.ts";
+import { IAdminAuthService } from "../Interface/service/admin/admin.auth.service.ts";
+import { AdminAuthService } from "../../services/admin/admin.auth.service.ts";
+import { IAdminUserService } from "../Interface/service/admin/Iadmin.user.service.ts";
+import { AdminUserService } from "../../services/admin/admin.user.service.ts";
 
 // user DI
 import { IUserAuthController } from "../Interface/constroller/user/Iuser.auth.controller.ts";
@@ -23,6 +33,9 @@ const container = new Container()
 // admin
 container.bind<IAdminAuthController>('IAdminAuthController').to(AdminAuthController);
 container.bind<IAdminRepository>('IAdminRepository').to(AdminRepository);
+container.bind<IAdminUserController>('IAdminUserController').to(AdminUserController);
+container.bind<IAdminAuthService>('IAdminAuthService').to(AdminAuthService);
+container.bind<IAdminUserService>('IAdminUserService').to(AdminUserService);
 
 // user
 container.bind<IUserAuthController>('IUserAuthController').to(userAuthController);
@@ -30,6 +43,7 @@ container.bind<IUserRepository>('IUserRepository').to(UserRepository);
 container.bind<IUserAUthService>('IUserAUthService').to(userAuthService);
 
 // shared
-container.bind<IAuthValidator>('IAuthValidator').to(AuthValidator)
+container.bind<IAuthValidator>('IAuthValidator').to(AuthValidator);
+container.bind<IJWT>('IJWT').to(JWT)
 
 export { container }

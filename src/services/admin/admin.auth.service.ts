@@ -15,9 +15,9 @@ export class AdminAuthService implements IAdminAuthService {
     @inject('IAdminRepository') private readonly _adminRepo: IAdminRepository,
     @inject('IJWT') private readonly _ijwt: IJWT
   ) { }
-  async verifyLogin(data: { email: string; password: string; }): Promise<{ accessToken: string, refreshToken: string }> {
+  async verifyLogin(data: { name: string; password: string; }): Promise<{ accessToken: string, refreshToken: string }> {
     await this._authValidator.authValidator(data)
-    const existing = await this._adminRepo.findByEmail(data.email)
+    const existing = await this._adminRepo.findOne({name:data.name})
     if (!existing) throw new InvalidEmail()
     const isMatch = await bcrypt.compare(existing.password, data.password)
     if (!isMatch) throw new INVALID_CREDENTIAL()
