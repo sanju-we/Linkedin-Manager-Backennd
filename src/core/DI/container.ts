@@ -15,6 +15,10 @@ import { IAdminAuthService } from "../Interface/service/admin/admin.auth.service
 import { AdminAuthService } from "../../services/admin/admin.auth.service.ts";
 import { IAdminUserService } from "../Interface/service/admin/Iadmin.user.service.ts";
 import { AdminUserService } from "../../services/admin/admin.user.service.ts";
+import { IAdminManageController } from "../Interface/constroller/admin/Iadmin.adminM.controller.ts";
+import { AdminManageController } from "../../controller/admin/admin.manage.controller.ts";
+import { IAdminManageService } from "../Interface/service/admin/Iadmin.manage.service.ts";
+import { AdminManageService } from "../../services/admin/admin.manage.service.ts";
 
 // user DI
 import { IUserAuthController } from "../Interface/constroller/user/Iuser.auth.controller.ts";
@@ -36,6 +40,8 @@ container.bind<IAdminRepository>('IAdminRepository').to(AdminRepository);
 container.bind<IAdminUserController>('IAdminUserController').to(AdminUserController);
 container.bind<IAdminAuthService>('IAdminAuthService').to(AdminAuthService);
 container.bind<IAdminUserService>('IAdminUserService').to(AdminUserService);
+container.bind<IAdminManageController>('IAdminManageController').to(AdminManageController);
+container.bind<IAdminManageService>('IAdminManageService').to(AdminManageService);
 
 // user
 container.bind<IUserAuthController>('IUserAuthController').to(userAuthController);
