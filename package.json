@@ -4,7 +4,7 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "start": "tsx src/index.ts",
+    "start": "node dist/index.js",
     "dev": "nodemon --exec tsx src/index.ts",
     "test": "npm run lint && jest",
     "build": "tsc"
