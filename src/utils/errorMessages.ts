@@ -47,3 +47,15 @@ export class USER_NOT_FOUND extends HttpError {
     super(400, 'User not found');
   }
 }
+
+export class BAD_REQUEST extends HttpError {
+  constructor(message: string) {
+    super(400, message);
+  }
+}
+
+export class FILE_NOT_FOUND extends HttpError {
+  constructor() {
+    super(400, 'File not found');
+  }
+}
