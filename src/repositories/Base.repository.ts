@@ -6,7 +6,7 @@ import {
   QueryFilter
 } from "mongoose";
 
-import { logger } from "../utils/logger.js";
+import { logger } from "../utils/logger.ts";
 import { IBaseRepository } from "../core/Interface/Respository/IBaseRepositrory.ts";
 
 export class RepositoryError extends Error {

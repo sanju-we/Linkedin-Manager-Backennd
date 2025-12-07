@@ -41,3 +41,9 @@ export class DATA_NOT_FOUND extends HttpError {
     super(400, 'Data not found');
   }
 }
+
+export class USER_NOT_FOUND extends HttpError {
+  constructor() {
+    super(400, 'User not found');
+  }
+}

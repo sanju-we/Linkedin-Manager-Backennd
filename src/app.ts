@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import UserRouter from './routers/user.router.ts';
 import AdminRouter from './routers/admin.router.ts';
+import { errorHandler } from './middleware/errorHandler.ts';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(morgan('dev'))
 app.use('/api/user', UserRouter)
 app.use('/api/admin', AdminRouter)
 
+app.use(errorHandler)
 export function createApp() {
     return app
 }

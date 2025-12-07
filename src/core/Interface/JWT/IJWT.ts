@@ -1,5 +1,4 @@
 import { Response } from 'express';
-import { ResetToken } from '../../../types/index.ts'
 
 export interface IJWT {
   setTokenInCookies(res: Response, accessToken: string, refreshToken: string): Promise<void>;

@@ -27,6 +27,10 @@ import { IUserRepository } from "../Interface/Respository/IUserRepositroty.ts";
 import { UserRepository } from "../../repositories/User.repository.ts";
 import { IUserAUthService } from "../Interface/service/user/IUser.auth.service.ts";
 import { userAuthService } from "../../services/user/user.auth.service.ts";
+import { IUserProfileController } from "../Interface/constroller/user/IUser.profile.controller.ts";
+import { UserProfileController } from "../../controller/user/user.profile.controller.ts";
+import { IuserProfileService } from "../Interface/service/user/IUser.profile.service.ts";
+import { userProfileService } from "../../services/user/user.profile.service.ts";
 
 // Validator DI
 import { IAuthValidator } from "../Interface/validator/user/IUser.auth.validator.ts";
@@ -47,6 +51,8 @@ container.bind<IAdminManageService>('IAdminManageService').to(AdminManageService
 container.bind<IUserAuthController>('IUserAuthController').to(userAuthController);
 container.bind<IUserRepository>('IUserRepository').to(UserRepository);
 container.bind<IUserAUthService>('IUserAUthService').to(userAuthService);
+container.bind<IUserProfileController>('IUserProfileController').to(UserProfileController);
+container.bind<IuserProfileService>('IuserProfileService').to(userProfileService);
 
 // shared
 container.bind<IAuthValidator>('IAuthValidator').to(AuthValidator);

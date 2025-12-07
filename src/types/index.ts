@@ -7,7 +7,13 @@ export interface User {
     weeklyConnectionTotals?: number[];
 }
 
-export interface ResetToken {
-  id: string;
-  email: string;
+export interface Userauth {
+    id: string;
+    name: string;
+    role: string;
+}
+export interface AdminAuth {
+    id: string;
+    name: string;
+    role: string;
 }

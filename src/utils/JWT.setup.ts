@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 import { Response } from 'express';
 import jwt from 'jsonwebtoken';
-import {IJWT} from '../core/Interface/JWT/IJWT.ts'
-import { logger } from '../utils/logger.js';
+import { IJWT } from '../core/Interface/JWT/IJWT.ts'
+import { logger } from '../utils/logger.ts';
 
 @injectable()
 export class JWT implements IJWT {

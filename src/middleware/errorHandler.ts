@@ -1,0 +1,61 @@
+import { Request, Response, NextFunction } from 'express';
+import { ZodError } from 'zod';
+import mongoose from 'mongoose';
+import { HttpError } from '../utils/errorMessages.ts';
+import { logger } from '../utils/logger.ts';
+import { $ZodIssue } from 'zod/v4/core';
+
+export function errorHandler(err: { statusCode: number; message: string; name: string; stack: any; issues: $ZodIssue[]; errors: { [s: string]: mongoose.Error.ValidatorError | mongoose.Error.CastError; } | ArrayLike<mongoose.Error.ValidatorError | mongoose.Error.CastError>; code: number; keyValue: {}; path: any; value: any; }, req: Request, res: Response, next: NextFunction) {
+  let status = err.statusCode || 500;
+  let message = 'Something went wrong. Please try again later.';
+
+  if (err instanceof HttpError) {
+    status = err.statusCode;
+    message = err.message;
+  }
+
+
+  logger.error('--- Error Handler ---');
+  logger.error(`Name: ${err.name}`);
+  logger.error(err);
+  logger.error(`Message: ${err.message}`);
+  if (err.stack) logger.error(`Stack: ${err.stack}`);
+  logger.error('----------------------');
+
+  if (err instanceof ZodError) {
+    status = 400;
+    message = err.issues.map((issue) => issue.message).join(', ') || 'Invalid input data.';
+  } else if (err instanceof mongoose.Error.ValidationError) {
+    status = 400;
+    const errors = Object.values(err.errors).map((e: any) => e.message);
+    message = errors.join(', ') || 'Validation failed.';
+  } else if (err.code === 11000) {
+    status = 409;
+    const field = Object.keys(err.keyValue || {})[0];
+    if (field) {
+      message = `${field.charAt(0).toUpperCase() + field.slice(1)} is already in use.`;
+    } else {
+      message = "Duplicate key error"
+    }
+  } else if (err instanceof mongoose.Error.CastError) {
+    status = 400;
+    message = `Invalid ${err.path}: ${err.value}`;
+  } else if (err.name === 'RepositoryError') {
+    status = 400;
+    message = err.message || 'Repository operation failed.';
+  } else if (err.name === 'JsonWebTokenError') {
+    status = 401;
+    message = 'Invalid or expired token.';
+  } else if (err.name === 'TokenExpiredError') {
+    status = 401;
+    message = 'Your session has expired. Please log in again.';
+  } else if (err.message && status === 500) {
+    message = err.message.includes('Mongo') ? 'Database operation failed.' : message;
+  }
+
+  res.status(status).json({
+    success: false,
+    message,
+    ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
+  });
+}

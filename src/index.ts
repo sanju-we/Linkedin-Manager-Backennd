@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import dotenv from 'dotenv'
 import { connectDB } from './config/db.ts'
 import { createApp } from './app.ts'
