@@ -12,21 +12,15 @@ const user_router_1 = __importDefault(require("./routers/user.router"));
 const admin_router_1 = __importDefault(require("./routers/admin.router"));
 const errorHandler_1 = require("./middleware/errorHandler");
 const app = (0, express_1.default)();
-const allowedOrigins = [
-    'http://localhost:3000',
-    'https://linkedin-manager-beryl.vercel.app',
-];
-app.use((0, cors_1.default)({
-    origin: (origin, callback) => {
-        if (!origin)
-            return callback(null, true);
-        if (allowedOrigins.includes(origin)) {
-            return callback(null, true);
-        }
-        return callback(new Error('Not allowed by CORS'));
-    },
+const corsOptions = {
+    origin: "https://linkedin-manager-beryl.vercel.app",
     credentials: true,
-}));
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Set-Cookie"],
+};
+app.use((0, cors_1.default)(corsOptions));
+app.options("*", (0, cors_1.default)(corsOptions));
 // Increase body size limit for file uploads (50MB)
 app.use(express_1.default.json({ limit: '50mb' }));
 app.use(express_1.default.urlencoded({ extended: true, limit: '50mb' }));
