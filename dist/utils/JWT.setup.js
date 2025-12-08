@@ -23,13 +23,15 @@ let JWT = class JWT {
     async setTokenInCookies(res, accessToken, refreshToken) {
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            secure: true,
+            sameSite: "none",
+            path: "/",
         });
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            secure: true,
+            sameSite: "none",
+            path: "/",
         });
     }
     async generateToken(payload) {
@@ -51,13 +53,15 @@ let JWT = class JWT {
     async blacklistRefreshToken(res) {
         res.clearCookie('accessToken', {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            secure: true,
+            sameSite: "none",
+            path: "/",
         });
         res.clearCookie('refreshToken', {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            secure: true,
+            sameSite: "none",
+            path: "/",
         });
         return { res };
     }
