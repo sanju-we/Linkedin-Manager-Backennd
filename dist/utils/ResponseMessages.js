@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MESSAGES = void 0;
-var MESSAGES;
+export var MESSAGES;
 (function (MESSAGES) {
     MESSAGES["BAD_REQUEST"] = "Bad Request";
     MESSAGES["LOGIN_SUCCESS"] = "Login successfull";
@@ -12,5 +9,5 @@ var MESSAGES;
     MESSAGES["FILE_NOT_FOUND"] = "File not found";
     MESSAGES["LOGOUT_SUCCESS"] = "Logout successfull";
     MESSAGES["REFRESH_TOKEN_SUCCESS"] = "Refresh token successfull";
-})(MESSAGES || (exports.MESSAGES = MESSAGES = {}));
+})(MESSAGES || (MESSAGES = {}));
 //# sourceMappingURL=ResponseMessages.js.map

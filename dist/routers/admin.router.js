@@ -1,16 +1,11 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const admin_auth_routes_1 = __importDefault(require("./admin/admin.auth.routes"));
-const admin_user_routes_1 = __importDefault(require("./admin/admin.user.routes"));
-const admin_adminM_routes_1 = __importDefault(require("./admin/admin.adminM.routes"));
-const authMiddleware_1 = require("../middleware/authMiddleware");
-const AdminRouter = (0, express_1.Router)();
-AdminRouter.use('/auth', admin_auth_routes_1.default)
-    .use('/m', authMiddleware_1.verifyAdminToken, admin_user_routes_1.default)
-    .use('/am', authMiddleware_1.verifyAdminToken, admin_adminM_routes_1.default);
-exports.default = AdminRouter;
+import { Router } from "express";
+import authRouter from "./admin/admin.auth.routes";
+import adminUserRouter from "./admin/admin.user.routes";
+import adminMRouter from "./admin/admin.adminM.routes";
+import { verifyAdminToken } from "../middleware/authMiddleware";
+const AdminRouter = Router();
+AdminRouter.use('/auth', authRouter)
+    .use('/m', verifyAdminToken, adminUserRouter)
+    .use('/am', verifyAdminToken, adminMRouter);
+export default AdminRouter;
 //# sourceMappingURL=admin.router.js.map
