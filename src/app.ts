@@ -8,6 +8,7 @@ import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
 
+app.set("trust proxy", 1);
 const corsOptions = {
   origin: "https://linkedin-manager-beryl.vercel.app",
   credentials: true,

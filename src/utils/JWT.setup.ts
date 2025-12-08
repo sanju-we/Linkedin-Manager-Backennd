@@ -24,6 +24,7 @@ export class JWT implements IJWT {
       sameSite: "none",
       path: "/",
     });
+    
   }
 
   async generateToken(payload: { id: string; role: string }): Promise<{

@@ -12,6 +12,7 @@ const user_router_1 = __importDefault(require("./routers/user.router"));
 const admin_router_1 = __importDefault(require("./routers/admin.router"));
 const errorHandler_1 = require("./middleware/errorHandler");
 const app = (0, express_1.default)();
+app.set("trust proxy", 1);
 const corsOptions = {
     origin: "https://linkedin-manager-beryl.vercel.app",
     credentials: true,

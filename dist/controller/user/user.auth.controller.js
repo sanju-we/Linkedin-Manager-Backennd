@@ -27,7 +27,10 @@ let userAuthController = class userAuthController {
         const data = req.body;
         const result = await this._userService.verify(data);
         await this._ijwt.setTokenInCookies(res, result.accessToken, result.refreshToken);
-        (0, sendResponse_1.sendResponse)(res, StatusCodes_1.STATUS_CODE.OK, true, ResponseMessages_1.MESSAGES.LOGIN_SUCCESS);
+        res.status(200).json({
+            success: true,
+            message: ResponseMessages_1.MESSAGES.LOGIN_SUCCESS,
+        });
     }
     async logout(req, res) {
         await this._ijwt.blacklistRefreshToken(res);
