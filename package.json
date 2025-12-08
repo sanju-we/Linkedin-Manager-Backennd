@@ -1,7 +1,6 @@
 {
   "name": "linkedin-management-server",
   "version": "1.0.0",
-  "type": "module",
   "main": "src/index.js",
   "scripts": {
     "start": "node dist/index.js",

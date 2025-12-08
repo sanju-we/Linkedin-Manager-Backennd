@@ -1,11 +1,15 @@
-import { logger } from "./logger";
-export function throwError(message, statusCode = 400) {
-    logger.error('Throwing error:', message);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FILE_NOT_FOUND = exports.BAD_REQUEST = exports.USER_NOT_FOUND = exports.DATA_NOT_FOUND = exports.INVALID_CREDENTIAL = exports.ALREADY_EXISTS = exports.InvalidEmail = exports.HttpError = void 0;
+exports.throwError = throwError;
+const logger_1 = require("./logger");
+function throwError(message, statusCode = 400) {
+    logger_1.logger.error('Throwing error:', message);
     const error = new Error(message);
     error.statusCode = statusCode;
     throw error;
 }
-export class HttpError extends Error {
+class HttpError extends Error {
     constructor(statusCode, message) {
         super(message);
         this.statusCode = statusCode;
@@ -13,39 +17,46 @@ export class HttpError extends Error {
         Error.captureStackTrace(this, this.constructor);
     }
 }
-export class InvalidEmail extends HttpError {
+exports.HttpError = HttpError;
+class InvalidEmail extends HttpError {
     constructor() {
         super(400, 'This User is not existing in this application');
     }
 }
-export class ALREADY_EXISTS extends HttpError {
+exports.InvalidEmail = InvalidEmail;
+class ALREADY_EXISTS extends HttpError {
     constructor() {
         super(400, 'Already exists');
     }
 }
-export class INVALID_CREDENTIAL extends HttpError {
+exports.ALREADY_EXISTS = ALREADY_EXISTS;
+class INVALID_CREDENTIAL extends HttpError {
     constructor() {
         super(400, 'Invalid Password');
     }
 }
-export class DATA_NOT_FOUND extends HttpError {
+exports.INVALID_CREDENTIAL = INVALID_CREDENTIAL;
+class DATA_NOT_FOUND extends HttpError {
     constructor() {
         super(400, 'Data not found');
     }
 }
-export class USER_NOT_FOUND extends HttpError {
+exports.DATA_NOT_FOUND = DATA_NOT_FOUND;
+class USER_NOT_FOUND extends HttpError {
     constructor() {
         super(400, 'User not found');
     }
 }
-export class BAD_REQUEST extends HttpError {
+exports.USER_NOT_FOUND = USER_NOT_FOUND;
+class BAD_REQUEST extends HttpError {
     constructor(message) {
         super(400, message);
     }
 }
-export class FILE_NOT_FOUND extends HttpError {
+exports.BAD_REQUEST = BAD_REQUEST;
+class FILE_NOT_FOUND extends HttpError {
     constructor() {
         super(400, 'File not found');
     }
 }
-//# sourceMappingURL=errorMessages.js.map
+exports.FILE_NOT_FOUND = FILE_NOT_FOUND;

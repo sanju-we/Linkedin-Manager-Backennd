@@ -1,26 +1,32 @@
-import { ZodError } from 'zod';
-import mongoose from 'mongoose';
-import { HttpError } from '../utils/errorMessages';
-import { logger } from '../utils/logger';
-export function errorHandler(err, req, res, next) {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.errorHandler = errorHandler;
+const zod_1 = require("zod");
+const mongoose_1 = __importDefault(require("mongoose"));
+const errorMessages_1 = require("../utils/errorMessages");
+const logger_1 = require("../utils/logger");
+function errorHandler(err, req, res, next) {
     let status = err.statusCode || 500;
     let message = 'Something went wrong. Please try again later.';
-    if (err instanceof HttpError) {
+    if (err instanceof errorMessages_1.HttpError) {
         status = err.statusCode;
         message = err.message;
     }
-    logger.error('--- Error Handler ---');
-    logger.error(`Name: ${err.name}`);
-    logger.error(err);
-    logger.error(`Message: ${err.message}`);
+    logger_1.logger.error('--- Error Handler ---');
+    logger_1.logger.error(`Name: ${err.name}`);
+    logger_1.logger.error(err);
+    logger_1.logger.error(`Message: ${err.message}`);
     if (err.stack)
-        logger.error(`Stack: ${err.stack}`);
-    logger.error('----------------------');
-    if (err instanceof ZodError) {
+        logger_1.logger.error(`Stack: ${err.stack}`);
+    logger_1.logger.error('----------------------');
+    if (err instanceof zod_1.ZodError) {
         status = 400;
         message = err.issues.map((issue) => issue.message).join(', ') || 'Invalid input data.';
     }
-    else if (err instanceof mongoose.Error.ValidationError) {
+    else if (err instanceof mongoose_1.default.Error.ValidationError) {
         status = 400;
         const errors = Object.values(err.errors).map((e) => e.message);
         message = errors.join(', ') || 'Validation failed.';
@@ -35,7 +41,7 @@ export function errorHandler(err, req, res, next) {
             message = "Duplicate key error";
         }
     }
-    else if (err instanceof mongoose.Error.CastError) {
+    else if (err instanceof mongoose_1.default.Error.CastError) {
         status = 400;
         message = `Invalid ${err.path}: ${err.value}`;
     }
@@ -60,4 +66,3 @@ export function errorHandler(err, req, res, next) {
         ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
     });
 }
-//# sourceMappingURL=errorHandler.js.map

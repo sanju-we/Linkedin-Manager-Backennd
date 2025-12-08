@@ -1,15 +1,19 @@
-import 'reflect-metadata';
-import dotenv from 'dotenv';
-import { connectDB } from './config/db';
-import { createApp } from './app';
-import { logger } from './utils/logger';
-dotenv.config();
-const app = createApp();
-connectDB().then(() => {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
+const dotenv_1 = __importDefault(require("dotenv"));
+const db_1 = require("./config/db");
+const app_1 = require("./app");
+const logger_1 = require("./utils/logger");
+dotenv_1.default.config();
+const app = (0, app_1.createApp)();
+(0, db_1.connectDB)().then(() => {
     app.listen(process.env.PORT, () => {
-        logger.info(`Server running on port ${process.env.PORT}`);
+        logger_1.logger.info(`Server running on port ${process.env.PORT}`);
     });
 }).catch((error) => {
-    logger.error(`Server failed to start: ${error}`);
+    logger_1.logger.error(`Server failed to start: ${error}`);
 });
-//# sourceMappingURL=index.js.map

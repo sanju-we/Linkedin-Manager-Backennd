@@ -1,11 +1,17 @@
-import express from 'express';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-import morgan from 'morgan';
-import UserRouter from './routers/user.router';
-import AdminRouter from './routers/admin.router';
-import { errorHandler } from './middleware/errorHandler';
-const app = express();
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createApp = createApp;
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const morgan_1 = __importDefault(require("morgan"));
+const user_router_1 = __importDefault(require("./routers/user.router"));
+const admin_router_1 = __importDefault(require("./routers/admin.router"));
+const errorHandler_1 = require("./middleware/errorHandler");
+const app = (0, express_1.default)();
 // CORS configuration - flexible for development
 const corsOptions = {
     origin: (origin, callback) => {
@@ -40,16 +46,15 @@ const corsOptions = {
     preflightContinue: false,
     optionsSuccessStatus: 204,
 };
-app.use(cors(corsOptions));
+app.use((0, cors_1.default)(corsOptions));
 // Increase body size limit for file uploads (50MB)
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ extended: true, limit: '50mb' }));
-app.use(cookieParser());
-app.use(morgan('dev'));
-app.use('/api/user', UserRouter);
-app.use('/api/admin', AdminRouter);
-app.use(errorHandler);
-export function createApp() {
+app.use(express_1.default.json({ limit: '50mb' }));
+app.use(express_1.default.urlencoded({ extended: true, limit: '50mb' }));
+app.use((0, cookie_parser_1.default)());
+app.use((0, morgan_1.default)('dev'));
+app.use('/api/user', user_router_1.default);
+app.use('/api/admin', admin_router_1.default);
+app.use(errorHandler_1.errorHandler);
+function createApp() {
     return app;
 }
-//# sourceMappingURL=app.js.map

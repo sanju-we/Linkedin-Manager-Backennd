@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,9 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { inject, injectable } from "inversify";
-import { ALREADY_EXISTS } from "../../utils/errorMessages";
-import bcrypt from 'bcrypt';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AdminManageService = void 0;
+const inversify_1 = require("inversify");
+const errorMessages_1 = require("../../utils/errorMessages");
+const bcrypt_1 = __importDefault(require("bcrypt"));
 let AdminManageService = class AdminManageService {
     constructor(_authValidator, _adminRepo) {
         this._authValidator = _authValidator;
@@ -22,17 +28,16 @@ let AdminManageService = class AdminManageService {
         await this._authValidator.authValidator({ name, password });
         const existing = await this._adminRepo.findOne({ name: name });
         if (existing)
-            throw new ALREADY_EXISTS();
-        const hashedPassword = await bcrypt.hash(password, 10);
+            throw new errorMessages_1.ALREADY_EXISTS();
+        const hashedPassword = await bcrypt_1.default.hash(password, 10);
         const admin = await this._adminRepo.create({ name, password: hashedPassword });
         return admin;
     }
 };
-AdminManageService = __decorate([
-    injectable(),
-    __param(0, inject('IAuthValidator')),
-    __param(1, inject('IAdminRepository')),
+exports.AdminManageService = AdminManageService;
+exports.AdminManageService = AdminManageService = __decorate([
+    (0, inversify_1.injectable)(),
+    __param(0, (0, inversify_1.inject)('IAuthValidator')),
+    __param(1, (0, inversify_1.inject)('IAdminRepository')),
     __metadata("design:paramtypes", [Object, Object])
 ], AdminManageService);
-export { AdminManageService };
-//# sourceMappingURL=admin.manage.service.js.map

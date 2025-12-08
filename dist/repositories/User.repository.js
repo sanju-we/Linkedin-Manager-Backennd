@@ -1,8 +1,11 @@
-import { BaseRepository } from "./Base.repository";
-import { User } from "../models/User";
-export class UserRepository extends BaseRepository {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserRepository = void 0;
+const Base_repository_1 = require("./Base.repository");
+const User_1 = require("../models/User");
+class UserRepository extends Base_repository_1.BaseRepository {
     constructor() {
-        super(User);
+        super(User_1.User);
     }
 }
-//# sourceMappingURL=User.repository.js.map
+exports.UserRepository = UserRepository;
