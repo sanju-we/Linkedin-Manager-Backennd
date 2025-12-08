@@ -14,13 +14,15 @@ export class JWT implements IJWT {
   async setTokenInCookies(res: Response, accessToken: string, refreshToken: string): Promise<void> {
     res.cookie('accessToken', accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: true,
+      sameSite: "none",
+      path: "/",
     });
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: true,
+      sameSite: "none",
+      path: "/",
     });
   }
 
@@ -46,14 +48,16 @@ export class JWT implements IJWT {
   async blacklistRefreshToken(res: Response): Promise<{ res: Response }> {
     res.clearCookie('accessToken', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: true,
+      sameSite: "none",
+      path: "/",
     });
 
     res.clearCookie('refreshToken', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: true,
+      sameSite: "none",
+      path: "/",
     });
     return { res };
   }
