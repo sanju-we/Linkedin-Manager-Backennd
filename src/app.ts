@@ -7,7 +7,7 @@ import AdminRouter from './routers/admin.router';
 import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
-const originAllowed = ['http://localhost:3000', 'https://linkedin-manager-beryl.vercel.app/'];
+const originAllowed = ['http://localhost:3000', 'https://linkedin-manager-beryl.vercel.app'];
 app.use(
   cors({
     origin: originAllowed,
