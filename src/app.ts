@@ -13,7 +13,7 @@ const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins: string[] = [
       'http://localhost:3000',
-      'https://linkedin-manager-tawny.vercel.app',
+      'https://linkedin-manager-beryl.vercel.app/',
     ];
 
     if (process.env.NODE_ENV === 'development') {
