@@ -25,12 +25,14 @@ let JWT = class JWT {
             httpOnly: true,
             secure: true,
             sameSite: "none",
+            partitioned: true,
             path: "/",
         });
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true,
             sameSite: "none",
+            partitioned: true,
             path: "/",
         });
     }

@@ -16,15 +16,17 @@ export class JWT implements IJWT {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      partitioned: true,
       path: "/",
     });
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      partitioned: true,
       path: "/",
     });
-    
+
   }
 
   async generateToken(payload: { id: string; role: string }): Promise<{
