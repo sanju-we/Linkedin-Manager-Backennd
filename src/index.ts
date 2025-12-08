@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import dotenv from 'dotenv'
-import { connectDB } from './config/db.ts'
-import { createApp } from './app.ts'
-import { logger } from './utils/logger.ts'
+import { connectDB } from './config/db'
+import { createApp } from './app'
+import { logger } from './utils/logger'
 
 dotenv.config()
 const app = createApp()

@@ -6,6 +6,7 @@ export interface IUser extends Document{
   password:string,
   weeklyLimitPic : string[],
   growth : number,
+  previousCount : number,
   currentCount : number,
   createdAt : Date,
   profile:string,

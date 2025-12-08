@@ -1,4 +1,4 @@
-import { IUser } from "../../Model/Iuser.model.ts";
+import { IUser } from "../../Model/Iuser.model";
 
 export interface IuserProfileService {
   getProfile(id: string): Promise<IUser>;

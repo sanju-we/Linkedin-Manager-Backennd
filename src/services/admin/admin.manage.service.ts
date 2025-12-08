@@ -1,10 +1,10 @@
-import { IAdminManageService } from "../../core/Interface/service/admin/Iadmin.manage.service.ts";
-import { IAuthValidator } from "../../core/Interface/validator/user/IUser.auth.validator.ts";
+import { IAdminManageService } from "../../core/Interface/service/admin/Iadmin.manage.service";
+import { IAuthValidator } from "../../core/Interface/validator/user/IUser.auth.validator";
 import { inject, injectable } from "inversify";
-import { IAdminRepository } from "../../core/Interface/Respository/IAdminRepository.ts";
-import { ALREADY_EXISTS } from "../../utils/errorMessages.ts";
+import { IAdminRepository } from "../../core/Interface/Respository/IAdminRepository";
+import { ALREADY_EXISTS } from "../../utils/errorMessages";
 import bcrypt from 'bcrypt'
-import { IAdmin } from "../../core/Interface/Model/Iadmin.model.ts";
+import { IAdmin } from "../../core/Interface/Model/Iadmin.model";
 
 @injectable()
 export class AdminManageService implements IAdminManageService{

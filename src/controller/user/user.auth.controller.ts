@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { IUserAuthController } from "../../core/Interface/constroller/user/Iuser.auth.controller.ts";
+import { IUserAuthController } from "../../core/Interface/controller/user/Iuser.auth.controller";
 import { inject, injectable } from "inversify";
-import type { IUserAUthService } from "../../core/Interface/service/user/IUser.auth.service.ts";
-import type { IJWT } from "../../core/Interface/JWT/IJWT.ts";
-import { sendResponse } from "../../utils/sendResponse.ts";
-import { STATUS_CODE } from "../../utils/StatusCodes.ts";
-import { MESSAGES } from "../../utils/ResponseMessages.ts";
-import { logger } from "../../utils/logger.ts";
+import type { IUserAUthService } from "../../core/Interface/service/user/IUser.auth.service";
+import type { IJWT } from "../../core/Interface/JWT/IJWT";
+import { sendResponse } from "../../utils/sendResponse";
+import { STATUS_CODE } from "../../utils/StatusCodes";
+import { MESSAGES } from "../../utils/ResponseMessages";
+import { logger } from "../../utils/logger";
 
 @injectable()
 export class userAuthController implements IUserAuthController {

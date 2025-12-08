@@ -1,5 +1,5 @@
-import { IUser } from "../Model/Iuser.model.ts";
-import { IBaseRepository } from "./IBaseRepositrory.ts";
+import { IUser } from "../Model/Iuser.model";
+import { IBaseRepository } from "./IBaseRepositrory";
 
 export interface IUserRepository extends IBaseRepository<IUser>{
   

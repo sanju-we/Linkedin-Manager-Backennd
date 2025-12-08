@@ -1,5 +1,5 @@
-import { IAdmin } from "../Model/Iadmin.model.ts";
-import { IBaseRepository } from "./IBaseRepositrory.ts";
+import { IAdmin } from "../Model/Iadmin.model";
+import { IBaseRepository } from "./IBaseRepositrory";
 
 export interface IAdminRepository extends IBaseRepository<IAdmin>{
   

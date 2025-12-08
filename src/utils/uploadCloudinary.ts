@@ -1,7 +1,7 @@
-import cloudinary from '../config/cloudinary.js';
+import cloudinary from '../config/cloudinary';
 import streamifier from 'streamifier';
-import { logger } from './logger.js';
-import { FILE_NOT_FOUND } from './errorMessages.ts';
+import { logger } from './logger';
+import { FILE_NOT_FOUND } from './errorMessages';
 
 export const singleUpload = (file: Express.Multer.File, folder: string): Promise<string> => {
   return new Promise((resolve, reject) => {

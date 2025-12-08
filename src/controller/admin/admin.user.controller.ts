@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { IAdminUserController } from "../../core/Interface/constroller/admin/Iadmin.user.controller.ts";
-import { IAdminUserService } from "../../core/Interface/service/admin/Iadmin.user.service.ts";
+import { IAdminUserController } from "../../core/Interface/controller/admin/Iadmin.user.controller";
+import { IAdminUserService } from "../../core/Interface/service/admin/Iadmin.user.service";
 import { inject, injectable } from "inversify";
-import { sendResponse } from "../../utils/sendResponse.ts";
-import { STATUS_CODE } from "../../utils/StatusCodes.ts";
-import { MESSAGES } from "../../utils/ResponseMessages.ts";
+import { sendResponse } from "../../utils/sendResponse";
+import { STATUS_CODE } from "../../utils/StatusCodes";
+import { MESSAGES } from "../../utils/ResponseMessages";
+import { BAD_REQUEST } from "../../utils/errorMessages";
 
 @injectable()
 export class AdminUserController implements IAdminUserController {
@@ -20,5 +21,12 @@ export class AdminUserController implements IAdminUserController {
   async getALl(req: Request, res: Response): Promise<void> {
       const data = await this._adminService.getAllUsers()
       sendResponse(res,STATUS_CODE.OK,true,MESSAGES.ALL_DATA_FOUND,data)
+  }
+
+  async getUser(req: Request, res: Response): Promise<void> {
+      const userId = req.params.id
+      if(!userId) throw new BAD_REQUEST("User id is not there")
+      const user = await this._adminService.getUser(userId)
+      sendResponse(res,STATUS_CODE.OK,true,MESSAGES.DATA_FOUND,user)
   }
 }

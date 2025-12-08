@@ -1,40 +1,40 @@
 import { Container } from "inversify";
 
 // shated
-import { IJWT } from "../Interface/JWT/IJWT.ts";
-import { JWT } from "../../utils/JWT.setup.ts";
+import { IJWT } from "../Interface/JWT/IJWT";
+import { JWT } from "../../utils/JWT.setup";
 
 // admin DI
-import { IAdminAuthController } from "../Interface/constroller/admin/Iadmin.auth.controller.ts";
-import { AdminAuthController } from "../../controller/admin/admin.auth.controller.ts";
-import { IAdminRepository } from "../Interface/Respository/IAdminRepository.ts";
-import { AdminRepository } from "../../repositories/Admin.repository.ts";
-import { IAdminUserController } from "../Interface/constroller/admin/Iadmin.user.controller.ts";
-import { AdminUserController } from "../../controller/admin/admin.user.controller.ts";
-import { IAdminAuthService } from "../Interface/service/admin/admin.auth.service.ts";
-import { AdminAuthService } from "../../services/admin/admin.auth.service.ts";
-import { IAdminUserService } from "../Interface/service/admin/Iadmin.user.service.ts";
-import { AdminUserService } from "../../services/admin/admin.user.service.ts";
-import { IAdminManageController } from "../Interface/constroller/admin/Iadmin.adminM.controller.ts";
-import { AdminManageController } from "../../controller/admin/admin.manage.controller.ts";
-import { IAdminManageService } from "../Interface/service/admin/Iadmin.manage.service.ts";
-import { AdminManageService } from "../../services/admin/admin.manage.service.ts";
+import { IAdminAuthController } from "../Interface/controller/admin/Iadmin.auth.controller";
+import { AdminAuthController } from "../../controller/admin/admin.auth.controller";
+import { IAdminRepository } from "../Interface/Respository/IAdminRepository";
+import { AdminRepository } from "../../repositories/Admin.repository";
+import { IAdminUserController } from "../Interface/controller/admin/Iadmin.user.controller";
+import { AdminUserController } from "../../controller/admin/admin.user.controller";
+import { IAdminAuthService } from "../Interface/service/admin/admin.auth.service";
+import { AdminAuthService } from "../../services/admin/admin.auth.service";
+import { IAdminUserService } from "../Interface/service/admin/Iadmin.user.service";
+import { AdminUserService } from "../../services/admin/admin.user.service";
+import { IAdminManageController } from "../Interface/controller/admin/Iadmin.adminM.controller";
+import { AdminManageController } from "../../controller/admin/admin.manage.controller";
+import { IAdminManageService } from "../Interface/service/admin/Iadmin.manage.service";
+import { AdminManageService } from "../../services/admin/admin.manage.service";
 
 // user DI
-import { IUserAuthController } from "../Interface/constroller/user/Iuser.auth.controller.ts";
-import { userAuthController } from "../../controller/user/user.auth.controller.ts";
-import { IUserRepository } from "../Interface/Respository/IUserRepositroty.ts";
-import { UserRepository } from "../../repositories/User.repository.ts";
-import { IUserAUthService } from "../Interface/service/user/IUser.auth.service.ts";
-import { userAuthService } from "../../services/user/user.auth.service.ts";
-import { IUserProfileController } from "../Interface/constroller/user/IUser.profile.controller.ts";
-import { UserProfileController } from "../../controller/user/user.profile.controller.ts";
-import { IuserProfileService } from "../Interface/service/user/IUser.profile.service.ts";
-import { userProfileService } from "../../services/user/user.profile.service.ts";
+import { IUserAuthController } from "../Interface/controller/user/Iuser.auth.controller";
+import { userAuthController } from "../../controller/user/user.auth.controller";
+import { IUserRepository } from "../Interface/Respository/IUserRepositroty";
+import { UserRepository } from "../../repositories/User.repository";
+import { IUserAUthService } from "../Interface/service/user/IUser.auth.service";
+import { userAuthService } from "../../services/user/user.auth.service";
+import { IUserProfileController } from "../Interface/controller/user/IUser.profile.controller";
+import { UserProfileController } from "../../controller/user/user.profile.controller";
+import { IuserProfileService } from "../Interface/service/user/IUser.profile.service";
+import { userProfileService } from "../../services/user/user.profile.service";
 
 // Validator DI
-import { IAuthValidator } from "../Interface/validator/user/IUser.auth.validator.ts";
-import { AuthValidator } from "../../validator/user.auth.validator.ts";
+import { IAuthValidator } from "../Interface/validator/user/IUser.auth.validator";
+import { AuthValidator } from "../../validator/user.auth.validator";
 
 const container = new Container()
 

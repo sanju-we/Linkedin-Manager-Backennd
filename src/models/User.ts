@@ -1,4 +1,4 @@
-import { IUser } from "../core/Interface/Model/Iuser.model.ts";
+import { IUser } from "../core/Interface/Model/Iuser.model";
 import { Schema,model } from "mongoose";
 
 const userSchema = new Schema<IUser>({
@@ -6,6 +6,7 @@ const userSchema = new Schema<IUser>({
   password:{type:String,requires:true,},
   weeklyLimitPic:{type:[String]},
   growth:{type:Number},
+  previousCount:{type:Number},
   currentCount:{type:Number},
   createdAt:{type:Date},
   profile:{type:String},

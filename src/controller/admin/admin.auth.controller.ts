@@ -1,11 +1,11 @@
-import { IAdminAuthController } from "../../core/Interface/constroller/admin/Iadmin.auth.controller.ts";
+import { IAdminAuthController } from "../../core/Interface/controller/admin/Iadmin.auth.controller";
 import { Request, Response } from "express";
-import type { IAdminAuthService } from "../../core/Interface/service/admin/admin.auth.service.ts";
+import { IAdminAuthService } from "../../core/Interface/service/admin/admin.auth.service";
 import { inject, injectable } from "inversify";
-import type { IJWT } from "../../core/Interface/JWT/IJWT.ts";
-import { sendResponse } from "../../utils/sendResponse.ts";
-import { STATUS_CODE } from "../../utils/StatusCodes.ts";
-import { MESSAGES } from "../../utils/ResponseMessages.ts";
+import { IJWT } from "../../core/Interface/JWT/IJWT";
+import { sendResponse } from "../../utils/sendResponse";
+import { STATUS_CODE } from "../../utils/StatusCodes";
+import { MESSAGES } from "../../utils/ResponseMessages";
 
 @injectable()
 export class AdminAuthController implements IAdminAuthController {

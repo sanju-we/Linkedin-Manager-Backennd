@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { IUserProfileController } from "../../core/Interface/constroller/user/IUser.profile.controller.ts";
-import { IuserProfileService } from "../../core/Interface/service/user/IUser.profile.service.ts";
+import { IUserProfileController } from "../../core/Interface/controller/user/IUser.profile.controller";
+import { IuserProfileService } from "../../core/Interface/service/user/IUser.profile.service";
 import { inject, injectable } from "inversify";
-import { sendResponse } from "../../utils/sendResponse.ts";
-import { STATUS_CODE } from "../../utils/StatusCodes.ts";
-import { MESSAGES } from "../../utils/ResponseMessages.ts";
-import { BAD_REQUEST } from "../../utils/errorMessages.ts";
-import { logger } from "../../utils/logger.ts";
+import { sendResponse } from "../../utils/sendResponse";
+import { STATUS_CODE } from "../../utils/StatusCodes";
+import { MESSAGES } from "../../utils/ResponseMessages";
+import { BAD_REQUEST } from "../../utils/errorMessages";
+import { logger } from "../../utils/logger";
 
 @injectable()
 export class UserProfileController implements IUserProfileController {

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { IUserAuthController } from '../../core/Interface/constroller/user/Iuser.auth.controller.ts';
-import { container } from '../../core/DI/container.ts';
-import { asyncHandler } from '../../middleware/asyncHandler.ts';
+import { IUserAuthController } from '../../core/Interface/controller/user/Iuser.auth.controller.js';
+import { container } from '../../core/DI/container';
+import { asyncHandler } from '../../middleware/asyncHandler';
 
 const userAuthRouter = Router();
 const userController = container.get<IUserAuthController>('IUserAuthController')

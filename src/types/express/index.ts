@@ -1,4 +1,4 @@
-import { Userauth, AdminAuth } from '../index.ts';
+import { Userauth, AdminAuth } from '../index';
 
 declare global {
   namespace Express {

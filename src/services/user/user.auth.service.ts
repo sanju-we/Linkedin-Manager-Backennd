@@ -1,10 +1,10 @@
-import { IUserAUthService } from "../../core/Interface/service/user/IUser.auth.service.ts";
+import { IUserAUthService } from "../../core/Interface/service/user/IUser.auth.service";
 import { inject, injectable } from "inversify";
-import { IUserRepository } from "../../core/Interface/Respository/IUserRepositroty.ts";
-import { IAuthValidator } from "../../core/Interface/validator/user/IUser.auth.validator.ts";
-import { INVALID_CREDENTIAL, InvalidEmail } from "../../utils/errorMessages.ts";
+import { IUserRepository } from "../../core/Interface/Respository/IUserRepositroty";
+import { IAuthValidator } from "../../core/Interface/validator/user/IUser.auth.validator";
+import { INVALID_CREDENTIAL, InvalidEmail } from "../../utils/errorMessages";
 import bcrypt from 'bcrypt'
-import { IJWT } from "../../core/Interface/JWT/IJWT.ts";
+import { IJWT } from "../../core/Interface/JWT/IJWT";
 
 @injectable()
 export class userAuthService implements IUserAUthService {

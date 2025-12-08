@@ -1,4 +1,3 @@
-// src/core/interfaces/repository/IBaseRepository.ts
 import { QueryFilter, UpdateQuery, Document } from "mongoose";
 
 export interface IBaseRepository<T extends Document> {

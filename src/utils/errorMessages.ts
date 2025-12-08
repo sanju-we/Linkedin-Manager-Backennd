@@ -1,4 +1,4 @@
-import { logger } from "./logger.ts";
+import { logger } from "./logger";
 
 export function throwError(message: string, statusCode = 400): never {
   logger.error('Throwing error:', message);

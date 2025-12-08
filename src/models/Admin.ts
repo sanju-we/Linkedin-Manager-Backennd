@@ -1,5 +1,5 @@
 import { Schema,model } from "mongoose";
-import { IAdmin } from "../core/Interface/Model/Iadmin.model.ts";
+import { IAdmin } from "../core/Interface/Model/Iadmin.model";
 
 const adminSchema = new Schema<IAdmin>({
   name:{type:String},

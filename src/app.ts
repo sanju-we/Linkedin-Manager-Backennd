@@ -2,9 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
-import UserRouter from './routers/user.router.ts';
-import AdminRouter from './routers/admin.router.ts';
-import { errorHandler } from './middleware/errorHandler.ts';
+import UserRouter from './routers/user.router';
+import AdminRouter from './routers/admin.router';
+import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
 

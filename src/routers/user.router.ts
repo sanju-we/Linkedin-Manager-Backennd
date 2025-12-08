@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import userAuthRouter from './user/user.auth.router.ts';
-import userProfileRouter from './user/user.profile.routes.ts';
-import { verifyToken } from '../middleware/authMiddleware.ts';
-import userRefreshRouter from './user/user.refresh.routes.ts';
+import userAuthRouter from './user/user.auth.router';
+import userProfileRouter from './user/user.profile.routes';
+import { verifyToken } from '../middleware/authMiddleware';
+import userRefreshRouter from './user/user.refresh.routes';
 
 const userRouter = Router();
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { IAdminManageController } from "../../core/Interface/constroller/admin/Iadmin.adminM.controller.ts";
-import { container } from "../../core/DI/container.ts";
-import { asyncHandler } from "../../middleware/asyncHandler.ts";
+import { IAdminManageController } from "../../core/Interface/controller/admin/Iadmin.adminM.controller";
+import { container } from "../../core/DI/container";
+import { asyncHandler } from "../../middleware/asyncHandler";
 
 const adminMRouter = Router()
 const adminManageController = container.get<IAdminManageController>('IAdminManageController')

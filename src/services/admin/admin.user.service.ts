@@ -1,10 +1,10 @@
-import { IAdminUserService } from "../../core/Interface/service/admin/Iadmin.user.service.ts";
+import { IAdminUserService } from "../../core/Interface/service/admin/Iadmin.user.service";
 import { inject, injectable } from "inversify";
-import { IAuthValidator } from "../../core/Interface/validator/user/IUser.auth.validator.ts";
-import { IUserRepository } from "../../core/Interface/Respository/IUserRepositroty.ts";
-import { ALREADY_EXISTS, DATA_NOT_FOUND } from "../../utils/errorMessages.ts";
+import { IAuthValidator } from "../../core/Interface/validator/user/IUser.auth.validator";
+import { IUserRepository } from "../../core/Interface/Respository/IUserRepositroty";
+import { ALREADY_EXISTS, DATA_NOT_FOUND } from "../../utils/errorMessages";
 import bcrypt from 'bcrypt'
-import { IUser } from "../../core/Interface/Model/Iuser.model.ts";
+import { IUser } from "../../core/Interface/Model/Iuser.model";
 
 @injectable()
 export class AdminUserService implements IAdminUserService {
@@ -25,5 +25,11 @@ export class AdminUserService implements IAdminUserService {
     const users = await this._userRepo.findAll({})
     if (!users) throw new DATA_NOT_FOUND()
     return users
+  }
+
+  async getUser(userId: string): Promise<IUser> {
+    const user = await this._userRepo.findById(userId);
+    if (!user) throw new DATA_NOT_FOUND()
+    return user
   }
 }

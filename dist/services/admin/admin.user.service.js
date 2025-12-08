@@ -1,0 +1,56 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AdminUserService = void 0;
+const inversify_1 = require("inversify");
+const errorMessages_1 = require("../../utils/errorMessages");
+const bcrypt_1 = __importDefault(require("bcrypt"));
+let AdminUserService = class AdminUserService {
+    constructor(_authValidator, _userRepo) {
+        this._authValidator = _authValidator;
+        this._userRepo = _userRepo;
+    }
+    async addUser(data) {
+        await this._authValidator.userValidator(data);
+        const existing = await this._userRepo.findOne({ name: data.name });
+        if (existing)
+            throw new errorMessages_1.ALREADY_EXISTS();
+        const hashedPassword = await bcrypt_1.default.hash(data.password, 10);
+        const user = await this._userRepo.create({ name: data.name, password: hashedPassword, linkedAcc: data.linkedAcc });
+        return user;
+    }
+    async getAllUsers() {
+        const users = await this._userRepo.findAll({});
+        if (!users)
+            throw new errorMessages_1.DATA_NOT_FOUND();
+        return users;
+    }
+    async getUser(userId) {
+        const user = await this._userRepo.findById(userId);
+        if (!user)
+            throw new errorMessages_1.DATA_NOT_FOUND();
+        return user;
+    }
+};
+exports.AdminUserService = AdminUserService;
+exports.AdminUserService = AdminUserService = __decorate([
+    (0, inversify_1.injectable)(),
+    __param(0, (0, inversify_1.inject)('IAuthValidator')),
+    __param(1, (0, inversify_1.inject)('IUserRepository')),
+    __metadata("design:paramtypes", [Object, Object])
+], AdminUserService);
+//# sourceMappingURL=admin.user.service.js.map

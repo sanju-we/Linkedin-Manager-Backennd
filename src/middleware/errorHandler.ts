@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
 import mongoose from 'mongoose';
-import { HttpError } from '../utils/errorMessages.ts';
-import { logger } from '../utils/logger.ts';
+import { HttpError } from '../utils/errorMessages';
+import { logger } from '../utils/logger';
 import { $ZodIssue } from 'zod/v4/core';
 
 export function errorHandler(err: { statusCode: number; message: string; name: string; stack: any; issues: $ZodIssue[]; errors: { [s: string]: mongoose.Error.ValidatorError | mongoose.Error.CastError; } | ArrayLike<mongoose.Error.ValidatorError | mongoose.Error.CastError>; code: number; keyValue: {}; path: any; value: any; }, req: Request, res: Response, next: NextFunction) {

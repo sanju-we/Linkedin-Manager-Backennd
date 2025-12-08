@@ -1,5 +1,5 @@
 import z from "zod";
-import { IAuthValidator } from "../core/Interface/validator/user/IUser.auth.validator.ts";
+import { IAuthValidator } from "../core/Interface/validator/user/IUser.auth.validator";
 
 export class AuthValidator implements IAuthValidator{
   async authValidator(data: { name: string; password: string; }): Promise<void> {
