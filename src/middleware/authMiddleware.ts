@@ -65,7 +65,7 @@ export async function verifyAdminToken(req: Request, res: Response, next: NextFu
       return sendResponse(res, STATUS_CODE.UNAUTHORIZED, false, 'User not found');
     }
 
-    if (payload.role !== 'user') {
+    if (payload.role !== 'admin') {
       return sendResponse(res, STATUS_CODE.UNAUTHORIZED, false, 'Invalid token role');
     }
 
