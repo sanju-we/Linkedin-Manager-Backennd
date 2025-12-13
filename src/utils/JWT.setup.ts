@@ -3,14 +3,6 @@ import { Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { IJWT } from '../core/Interface/JWT/IJWT'
 import { logger } from '../utils/logger';
-const getCookieOptions = (maxAge?: number) => ({
-  httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: (process.env.NODE_ENV === "production" ? "none" : "lax") as "none" | "lax" | "strict",
-  domain: process.env.NODE_ENV === "production" ? ".jinu.site" : undefined,
-  path: "/",
-  ...(maxAge ? { maxAge } : {}),
-});
 
 @injectable()
 export class JWT implements IJWT {
@@ -19,12 +11,14 @@ export class JWT implements IJWT {
   private readonly REFRESH_TOKEN_EXPIRY = '7d';
   private readonly jwt = jwt;
 
-//   import { env } from "@config/env";
-
-
-
   async setTokenInCookies(res: Response, accessToken: string, refreshToken: string): Promise<void> {
-    res.cookie('accessToken', accessToken, getCookieOptions(24 * 60 * 60 * 1000));
+    res.cookie('accessToken', accessToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      partitioned: true,
+      path: "/",
+    });
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: true,
