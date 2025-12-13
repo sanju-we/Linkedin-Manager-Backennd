@@ -37,7 +37,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/multer": "^2.0.0",
-    "@types/node": "^24.10.1",
+    "@types/node": "^24.10.3",
     "@types/streamifier": "^0.1.2",
     "@types/winston": "^2.4.4",
     "eslint": "^9.39.1",
