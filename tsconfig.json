@@ -10,8 +10,9 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "noEmitOnError": false,
     "strict": true,
     "noEmit": false
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*.ts", "src/types/**/*.d.ts"]
 }
