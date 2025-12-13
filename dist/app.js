@@ -12,13 +12,14 @@ const user_router_1 = __importDefault(require("./routers/user.router"));
 const admin_router_1 = __importDefault(require("./routers/admin.router"));
 const errorHandler_1 = require("./middleware/errorHandler");
 const app = (0, express_1.default)();
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
+const originAllowed = ["https://linkedin-manager-beryl.vercel.app", "http://localhost:3000"];
 const corsOptions = {
-    origin: "https://linkedin-manager-beryl.vercel.app",
+    origin: originAllowed,
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    exposedHeaders: ["Set-Cookie"],
+    // exposedHeaders: ["Set-Cookie"],
 };
 app.use((0, cors_1.default)(corsOptions));
 app.options("*", (0, cors_1.default)(corsOptions));

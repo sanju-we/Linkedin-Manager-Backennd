@@ -13,6 +13,14 @@ exports.JWT = void 0;
 const inversify_1 = require("inversify");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const logger_1 = require("../utils/logger");
+const getCookieOptions = (maxAge) => ({
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: (process.env.NODE_ENV === "production" ? "none" : "lax"),
+    domain: process.env.NODE_ENV === "production" ? ".jinu.site" : undefined,
+    path: "/",
+    ...(maxAge ? { maxAge } : {}),
+});
 let JWT = class JWT {
     constructor() {
         this.JWT_SECRET = process.env.JWT_SECRET || 'your-secret';
@@ -20,14 +28,9 @@ let JWT = class JWT {
         this.REFRESH_TOKEN_EXPIRY = '7d';
         this.jwt = jsonwebtoken_1.default;
     }
+    //   import { env } from "@config/env";
     async setTokenInCookies(res, accessToken, refreshToken) {
-        res.cookie('accessToken', accessToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "none",
-            partitioned: true,
-            path: "/",
-        });
+        res.cookie('accessToken', accessToken, getCookieOptions(24 * 60 * 60 * 1000));
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true,

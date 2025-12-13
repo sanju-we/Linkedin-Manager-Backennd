@@ -65,7 +65,7 @@ async function verifyAdminToken(req, res, next) {
             ijwt.blacklistRefreshToken(res);
             return (0, sendResponse_1.sendResponse)(res, StatusCodes_1.STATUS_CODE.UNAUTHORIZED, false, 'User not found');
         }
-        if (payload.role !== 'user') {
+        if (payload.role !== 'admin') {
             return (0, sendResponse_1.sendResponse)(res, StatusCodes_1.STATUS_CODE.UNAUTHORIZED, false, 'Invalid token role');
         }
         req.user = (0, Request_DTO_1.toUserAuth)(user);

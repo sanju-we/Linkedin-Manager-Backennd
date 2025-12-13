@@ -10,6 +10,6 @@ const admin_adminM_routes_1 = __importDefault(require("./admin/admin.adminM.rout
 const authMiddleware_1 = require("../middleware/authMiddleware");
 const AdminRouter = (0, express_1.Router)();
 AdminRouter.use('/auth', admin_auth_routes_1.default)
-    .use('/m', authMiddleware_1.verifyAdminToken, admin_user_routes_1.default)
+    .use('/m', admin_user_routes_1.default)
     .use('/am', authMiddleware_1.verifyAdminToken, admin_adminM_routes_1.default);
 exports.default = AdminRouter;

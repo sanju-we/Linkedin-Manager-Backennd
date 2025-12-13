@@ -7,7 +7,7 @@ import { verifyAdminToken } from "../middleware/authMiddleware";
 const AdminRouter = Router()
 
 AdminRouter.use('/auth', authRouter)
-  .use('/m', verifyAdminToken, adminUserRouter)
+  .use('/m', adminUserRouter)
   .use('/am', verifyAdminToken, adminMRouter)
 
 export default AdminRouter
